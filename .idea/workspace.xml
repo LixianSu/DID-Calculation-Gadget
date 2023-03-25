@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6be4f1bb-d62b-4a8f-84f1-7e71493aae92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Preprocessing/CSV_Combining.py" beforeDir="false" afterPath="$PROJECT_DIR$/Preprocessing/CSV_Combining.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
