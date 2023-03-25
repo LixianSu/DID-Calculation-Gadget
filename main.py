@@ -9,8 +9,13 @@ import Preprocessing.CSV_Combining as Cc
 if __name__ == '__main__':
     # set the path where the CSV files are located
     # preprocessing
-    path = input('input the files path. (eg. path/to/csv/files)\n')
-    Cc.txttocsv(path)
-    Cc.combine(path)
+
+    # write the path of txt file in the list:
+    path_list = []
+
+    for path in path_list:
+        Cc.txttocsv(path)
+        Cc.combine(path)
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -24,7 +24,7 @@ def txttocsv(path):
                     # Write the fields to the CSV file
                     csv_writer.writerow(fields)
                 out_file.close()
-
+            os.remove(file)
 
 def combine(path):
     all_files = os.listdir(path)
@@ -40,6 +40,7 @@ def combine(path):
             # append the data to the merged_data dataframe
             # merged_data = merged_data.append(df)
             merged_data = pd.concat([merged_data, df])
+            os.remove(file)
         print("Running {0}th file...\n".format(str(all_files.index(file) + 1)))
     # save the merged data to a new CSV file
     merged_data.to_csv(os.path.join(path, "merged_data.csv"), index=False)
