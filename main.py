@@ -11,7 +11,7 @@ if __name__ == '__main__':
     # preprocessing
 
     # write the path of txt file in the list:
-    path_list = []
+    path_list = [r"F:\Comtrade_Data\3", r"F:\Comtrade_Data\4", r"F:\Comtrade_Data\5"]
 
     for path in path_list:
         Cc.txttocsv(path)
