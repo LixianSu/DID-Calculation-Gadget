@@ -42,13 +42,23 @@ def combine(path, cap):
     # iterate through each file and append its data to the merged_data dataframe
     for file in all_files:
         if file.endswith('.csv'):
-            # read the CSV file into a dataframe
-            df = pd.read_csv(os.path.join(path, file), low_memory=False)
-            # append the data to the merged_data dataframe
-            # merged_data = merged_data.append(df)
-            last = csvcount % int(cap)
-            if csvcount - totalcount >= last:
-                if countnum >= int(cap):
+            try:
+                # read the CSV file into a dataframe
+                df = pd.read_csv(os.path.join(path, file), low_memory=False)
+                # append the data to the merged_data dataframe
+                # merged_data = merged_data.append(df)
+                last = csvcount % int(cap)
+                if csvcount - totalcount >= last:
+                    if countnum >= int(cap):
+                        countnum = 1
+                        merged_data = pd.concat([merged_data, df])
+                        merged_data.to_csv(os.path.join(path, "merged_data{}.csv".format(index)), index=False)
+                        index += 1
+                        merged_data = pd.DataFrame()
+                    else:
+                        merged_data = pd.concat([merged_data, df])
+                        countnum += 1
+                elif csvcount == totalcount:
                     countnum = 1
                     merged_data = pd.concat([merged_data, df])
                     merged_data.to_csv(os.path.join(path, "merged_data{}.csv".format(index)), index=False)
@@ -56,16 +66,17 @@ def combine(path, cap):
                     merged_data = pd.DataFrame()
                 else:
                     merged_data = pd.concat([merged_data, df])
-                    countnum += 1
-            elif csvcount == totalcount:
+                os.remove(os.path.join(path, file))
+                totalcount += 1
+            except Exception as e:
                 countnum = 1
-                merged_data = pd.concat([merged_data, df])
                 merged_data.to_csv(os.path.join(path, "merged_data{}.csv".format(index)), index=False)
                 index += 1
                 merged_data = pd.DataFrame()
-            else:
                 merged_data = pd.concat([merged_data, df])
-            os.remove(os.path.join(path, file))
-            totalcount += 1
+                countnum += 1
+                os.remove(os.path.join(path, file))
+                totalcount += 1
+
         print("Running {0}th file...\n".format(str(all_files.index(file) + 1)))
     # save the merged data to a new CSV file
