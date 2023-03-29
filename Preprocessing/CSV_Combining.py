@@ -69,14 +69,18 @@ def combine(path, cap):
                 os.remove(os.path.join(path, file))
                 totalcount += 1
             except Exception as e:
-                countnum = 1
-                merged_data.to_csv(os.path.join(path, "merged_data{}.csv".format(index)), index=False)
-                index += 1
-                merged_data = pd.DataFrame()
-                merged_data = pd.concat([merged_data, df])
-                countnum += 1
-                os.remove(os.path.join(path, file))
-                totalcount += 1
+                try:
+                    countnum = 1
+                    merged_data.to_csv(os.path.join(path, "merged_data{}.csv".format(index)), index=False)
+                    index += 1
+                    merged_data = pd.DataFrame()
+                    merged_data = pd.concat([merged_data, df])
+                    countnum += 1
+                except Exception as e:
+                    print("A Fatal Error emerged\n")
+                else:
+                    os.remove(os.path.join(path, file))
+                    totalcount += 1
 
         print("Running {0}th file...\n".format(str(all_files.index(file) + 1)))
     # save the merged data to a new CSV file
