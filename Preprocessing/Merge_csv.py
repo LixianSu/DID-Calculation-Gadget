@@ -15,8 +15,9 @@ for file in all_csv_files:
     with open(file, 'rb') as f:
         result = chardet.detect(f.read())
         encoding = result['encoding']
-        df = pd.read_csv(file, encoding=encoding)
+        df = pd.read_csv(file, encoding=encoding, low_memory=False)
         dfs.append(df)
+        print("reading file {}".format(file))
 combined_csv = pd.concat(dfs, ignore_index=True)
 
 # 输出合并后的csv文件
