@@ -3,6 +3,7 @@ import csv
 import os
 
 
+
 def txttocsv(path):
     # get all the CSV files in the path
     all_files = os.listdir(path)
@@ -26,6 +27,7 @@ def txttocsv(path):
                 out_file.close()
             os.remove(os.path.join(path, file))
         print("Reading {0}th file...\n".format(str(all_files.index(file) + 1)))
+
 
 def combine(path, cap):
     all_files = os.listdir(path)
