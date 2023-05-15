@@ -12,7 +12,6 @@ if __name__ == '__main__':
     # write the path of txt file:
     path = input("Plz input the path of the txt files\n")
     cap = input("Plz input the separate parameter\n")
-    Cc.txttocsv(path)
     Cc.combine(path, cap)
 
 
