@@ -4,7 +4,7 @@ import pandas as pd
 import chardet
 
 # 输入文件夹路径
-folder_path = r"C:\Software\Russian-Ukrainian War\Data\Recent\EU"
+folder_path = r"C:\Users\LIXIANSU\Desktop\1"
 
 # 获取文件夹下所有csv文件
 all_csv_files = glob.glob(os.path.join(folder_path, "*.csv"))
